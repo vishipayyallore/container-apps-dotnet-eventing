@@ -15,7 +15,7 @@ namespace BlazorApp.Api
         [FunctionName("EventHubSender")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] EventHubRequest req,
-            [EventHub("%EVENTHUB_NAME%", Connection = "EventHubConnection")]out string message,
+            [EventHub("events", Connection = "EventHubConnectionString")]out string message,
             ILogger log)
         {
             message = req.Message;
